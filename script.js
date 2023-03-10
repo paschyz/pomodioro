@@ -18,21 +18,18 @@ setInterval(function () {
       hours++;
       minutes = 0;
       seconds = 0;
+
+      minutesSpan.innerHTML = minutes;
+      hoursSpan.innerHTML = hours;
     } else {
       minutes++;
       seconds = 0;
+
+      minutesSpan.innerHTML = minutes;
     }
   } else {
     seconds++;
   }
-  console.log("h:", hours);
-  console.log("m:", minutes);
-  console.log("s:", seconds);
-  console.log(" ");
 
   secondsSpan.innerHTML = seconds;
-
-  minutesSpan.innerHTML = minutes;
-
-  hoursSpan.innerHTML = hours;
 }, 1000);
