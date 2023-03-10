@@ -1,21 +1,131 @@
-#timer{
-    border:1px solid red;
-    display: inline-block;
-    width:80vw;
-    height: 80vh;
+#timerAndButton{
+    border:3px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:30vw;
+    min-width: 30vw;
+    height: 31vh;
     color: aliceblue;
-    background-color: black;
-
+    font-family: GirlOnAnAlley;
+/* center div */
+    margin: 0 auto;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+    
     /* background-image :url(maxresdefault.jpg); */
 }
 
 #timer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 13vh;
+margin-top: 9vh;
 }
+
 body{
+    /* background: #000000 url(https://jojo-portal.com/wp-content/themes/jojo-portal/assets/images/pc/common/bg_stripe.png) repeat top center/300px 1px; */
     background-color: black;
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+/* import font path locally */
+@font-face {
+    font-family: 'GirlOnAnAlley';
+    src: url('fonts/girl-on-an-alley-chmc-cufonfonts/GirlOnAnAlleyChmc-W7rV.ttf');
+}
+
+
+
+
+#logo a {
+    color: aliceblue;
+    font-family: GirlOnAnAlley;
+    font-size: 5vh;
+    text-decoration: none;
+}
+
+#logo{
+    margin-left: 0.7vw;
+}
+
+
+.container {
+    margin: 50px;
+    display: block;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+  }
+  
+  .pixel, #pixel2 {
+    font-size: 25px;
+    color: white;
+    height: auto;
+    margin: 10px;
+    font-family: 'VT323';
+    
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-transform: uppercase;
+    
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  #pixel2:active {
+    top: 3px;
+  }
+  
+
+  #pixel2 {
+    position: relative;
+    display: block;
+    margin: 10px;
+    font-family: 'VT323';
+    text-transform: uppercase;
+    
+    font-size: 25px;
+    color: white;
+  }
+  
+  #pixel2::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: -10px;
+    right: -10px;
+    background: black;
+    z-index: -1;
+  }
+  
+  #pixel2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: -6px;
+    right: -6px;
+    background: black;
+    z-index: -1;
+  }
+  
+  #pixel2 {
+    padding: 10px 10px;
+    position: relative;
+    background: black;
+    width: auto;
+    z-index: 2;
+  }

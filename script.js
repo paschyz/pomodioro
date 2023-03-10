@@ -1,28 +1,30 @@
 const timeStop = new Audio("audio/timeStop.mp3");
 const timeResume = new Audio("audio/timeResume.mp3");
 
-let timer = document.getElementById("timer");
-let startStopBtn = document.getElementById("startStopBtn");
+let timer = document.getElementById("timerAndButton");
+let startStopBtn = document.getElementById("pixel2");
 let secondsSpan = document.getElementById("seconds");
 let minutesSpan = document.getElementById("minutes");
 let minutes;
 let seconds;
-
-let mode = "work";
-let totalBreakTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 21);
-
 let totalTimeInSeconds;
 
-let totalWorkTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 10);
+let mode = "work";
 
 let bool = true;
 
 let decrement;
 
+let totalWorkTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 10);
+let totalBreakTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 10);
+
 window.onload = function () {
   totalTimeInSeconds = totalWorkTimeInSeconds;
   calculateTime(totalTimeInSeconds);
   refreshSecondsAndMinutes();
+
+  console.log(startStopBtn);
+  console.log(startStopBtn.innerHTML);
 };
 
 function convertMinutesAndSecondsToSeconds(minutes, seconds) {

@@ -1,0 +1,8 @@
+<!DOCTYPE SpriteDecomposer>
+<sprites image="dio.png" transparentColor="FFFFFF">
+ <animation title="dsq" delay="600">
+  <cut w="27" x="15" y="3" h="54" row="1" col="1"/>
+  <cut w="31" x="83" y="3" h="55" row="1" col="1"/>
+  <cut w="30" x="114" y="3" h="55" row="1" col="1"/>
+ </animation>
+</sprites>
