@@ -15,8 +15,8 @@ let bool = true;
 
 let decrement;
 
-let totalWorkTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 10);
-let totalBreakTimeInSeconds = convertMinutesAndSecondsToSeconds(0, 10);
+let totalWorkTimeInSeconds = convertMinutesAndSecondsToSeconds(25, 0);
+let totalBreakTimeInSeconds = convertMinutesAndSecondsToSeconds(5, 0);
 
 window.onload = function () {
   totalTimeInSeconds = totalWorkTimeInSeconds;
