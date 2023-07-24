@@ -4,18 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PomoDIOro</title>
+    <title>Pomodioro</title>
+
+    <link rel="icon" href="images/dio.png" type="image/png" >
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="timer">
-        <span id="hours">0</span> :
-        <span id="minutes">0</span> :
-        <span id="seconds">0</span>
+    <div id="logo">
+        <a href="">Pomodioro</a>
+        </div>
+    <div id="timerAndButton">
+        <div id="timer">
+        <span id="minutes"></span> :
+        <span id="seconds"></span>
+        </div>
+        <div>
+        <div class="container">
+            <div id="pixel2" onclick="startAndStop()"> 
+            Manipulate time 
+        </div>
+        </div>
     </div>
-    <div>
-        <button id="start">Start</button>
+        <!-- <div class="container">
+            <div class="pixel2" > 
+                <button onclick="startAndStop()">test</button>
+                pixelated button </div>
+            </div> -->
     </div>
+    
 </body>
 <script src="script.js"></script>
 </html>

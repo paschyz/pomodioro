@@ -1,38 +1,105 @@
-let timer = document.getElementById("timer");
-let start = document.getElementById("start");
+const timeStop = new Audio("audio/timeStop.mp3");
+const timeResume = new Audio("audio/timeResume.mp3");
+
+let timer = document.getElementById("timerAndButton");
+let startStopBtn = document.getElementById("pixel2");
 let secondsSpan = document.getElementById("seconds");
 let minutesSpan = document.getElementById("minutes");
-let hoursSpan = document.getElementById("hours");
+let minutes;
+let seconds;
+let totalTimeInSeconds;
 
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
+let mode = "work";
 
 let bool = true;
 
-function increment(seconds) {}
+let decrement;
 
-setInterval(function () {
-  if (seconds >= 59) {
-    if (minutes >= 59) {
-      hours++;
-      minutes = 0;
-      seconds = 0;
-    } else {
-      minutes++;
-      seconds = 0;
-    }
+let totalWorkTimeInSeconds = convertMinutesAndSecondsToSeconds(25, 0);
+let totalBreakTimeInSeconds = convertMinutesAndSecondsToSeconds(5, 0);
+
+window.onload = function () {
+  totalTimeInSeconds = totalWorkTimeInSeconds;
+  calculateTime(totalTimeInSeconds);
+  refreshSecondsAndMinutes();
+
+  console.log(startStopBtn);
+  console.log(startStopBtn.innerHTML);
+};
+
+function convertMinutesAndSecondsToSeconds(minutes, seconds) {
+  let time = minutes * 60 + seconds;
+  return time;
+}
+
+function calculateTime(sec) {
+  minutes = Math.floor(sec / 60);
+  seconds = sec - minutes * 60;
+}
+
+function redefineTotalTime() {
+  if (mode == "work") {
+    mode = "break";
+    timer.style.borderColor = "blue";
+    totalTimeInSeconds = totalBreakTimeInSeconds;
   } else {
-    seconds++;
+    mode = "work";
+    timer.style.borderColor = "red";
+    totalTimeInSeconds = totalWorkTimeInSeconds;
   }
-  console.log("h:", hours);
-  console.log("m:", minutes);
-  console.log("s:", seconds);
-  console.log(" ");
+  bool = true;
+  startStopBtn.innerHTML = "Resume Time";
+}
+function decrementTime() {
+  if (totalTimeInSeconds == 0) {
+    clearInterval(decrement);
+    // alert("Time is up!");
+    redefineTotalTime();
+  } else if (seconds == 0 && minutes != 0) {
+    minutes--;
+    seconds = 60;
 
-  secondsSpan.innerHTML = seconds;
+    totalTimeInSeconds--;
+  } else {
+    totalTimeInSeconds--;
+  }
+  console.log("decrementTime -> totalTimeInSeconds", totalTimeInSeconds);
+  calculateTime(totalTimeInSeconds);
+}
 
-  minutesSpan.innerHTML = minutes;
+function refreshSecondsAndMinutes() {
+  secondsSpan.innerHTML = addZeroIfLessThanTen(seconds);
+  minutesSpan.innerHTML = addZeroIfLessThanTen(minutes);
+}
 
-  hoursSpan.innerHTML = hours;
-}, 1000);
+function addZeroIfLessThanTen(number) {
+  if (number < 10) {
+    number = "0" + number;
+  }
+  return number;
+}
+
+function stopTimer() {
+  clearInterval(decrement);
+  startStopBtn.innerHTML = "Resume Time";
+  bool = true;
+  timeStop.play();
+}
+
+function resumeTimer() {
+  decrement = setInterval(function () {
+    decrementTime();
+    refreshSecondsAndMinutes();
+  }, 1000);
+  timeResume.play();
+  startStopBtn.innerHTML = "Stop Time";
+  bool = false;
+}
+
+function startAndStop() {
+  if (bool) {
+    resumeTimer();
+  } else {
+    stopTimer();
+  }
+}
